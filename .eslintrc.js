@@ -1,13 +1,17 @@
 module.exports = {
-  root: true,
-  env: {
-    node: true,
+  parser: 'eslint-html-parser',
+  parserOptions: {
+    sourceType: 'module',
+    ecmaVersion: 2018,
+    ecmaFeatures: {
+      globalReturn: false,
+      impliedStrict: false,
+      jsx: false,
+    },
   },
-  extends: [
-    "eslint:recommended",
-    "plugin:tailwindcss/recommended",
-    "plugin:prettier/recommended", // Make this the last element so prettier config overrides other formatting rules
-  ],
-  plugins: ["tailwindcss"],
-  rules: {},
-};
+  extends: ['plugin:prettier/recommended'],
+  rules: {
+    // ...
+    'prettier/prettier': ['error', { singleQuote: true }], //fix  prettier and eslin quote conflict
+  },
+}
